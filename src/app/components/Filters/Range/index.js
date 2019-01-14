@@ -1,7 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
-import noUiSlider from 'nouislider'
+// import noUiSlider from 'nouislider'
 
 // import './range.scss'
 
@@ -19,17 +19,17 @@ class Range extends React.Component {
   }
 
   componentDidMount() {
-    let range = document.querySelector('.ui-range-slider');
+    // let range = document.querySelector('.ui-range-slider');
 
-//     noUiSlider.create(range, {
-//       start: [this.state.defaultFrom, this.state.defaultTo],
-//       connect: true,
-//       step: 1,
-//       range: [
-//         'min': 1,
-//         'max': 10000
-//       ]
-//     })
+    // noUiSlider.create(range, {
+    //   start: [this.state.defaultFrom, this.state.defaultTo],
+    //   connect: true,
+    //   step: 1,
+    //   range: [
+    //     'min': 1,
+    //     'max': 10000
+    //   ]
+    // })
   }
 
   render() {

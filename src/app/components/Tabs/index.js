@@ -26,15 +26,21 @@ class Tabs extends React.Component {
   }
 
   render(){
+    const classNames = [
+      "nav-tabs",
+      this.props.centerAligin ? 'text-center' : 'mobile-center'
+    ].join(' ')
+
     return(
       <div className="col-sm-12">
-        <ul className="nav-tabs text-center" role="tablist">
+        <ul className={classNames} role="tablist">
           {this.state.headers.map((tab, i) => (
             <Tab 
               key={i}
               index={i}
               clicked={this.onClickHandler}
-              active={i === this.state.currentIndex} {...tab}
+              active={i === this.state.currentIndex} 
+              {...tab}
             />
           ))}
         </ul>
@@ -44,7 +50,7 @@ class Tabs extends React.Component {
             {this.state.contents.map((content, i) => {
               return(
                 <Content key={i} active={this.state.currentIndex === i}>
-                  { this.state.contents[this.state.currentIndex] }
+                  { this.state.contents[i] }
                 </Content>
               )
             })}

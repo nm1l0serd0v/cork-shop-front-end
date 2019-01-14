@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const showing = (props) => (
   <p className="text-sm space-bottom-none">

@@ -1,6 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
 
 const option = (props) => {
   const classes = [
@@ -8,7 +6,8 @@ const option = (props) => {
     `widget-${props.name}`
   ].join(' ')
 
-  const renderedOptions = props.options.map((option, i) => (<a href="#" key={i}>{option}</a>))
+  const renderedOptions = props.options.map((option, i) => (<a href="/" key={i}>{option}</a>))
+
   return(
     <div className={classes}>
       <h3 className="widget-title">{props.title}</h3>

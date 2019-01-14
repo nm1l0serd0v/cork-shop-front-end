@@ -1,9 +1,7 @@
 import React from 'react'
 
-import Header from '../components/shared/header'
-import Footer from '../components/shared/footer'
-
-import Home from '../pages/Home'
+import Header from '../components/Shared/header'
+import Footer from '../components/Shared/footer'
 
 export default class Application extends React.Component {
   render() {

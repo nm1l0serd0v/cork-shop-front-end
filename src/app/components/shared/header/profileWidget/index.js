@@ -1,17 +1,19 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 const profileWidget = (props) => {
   return(
     <React.Fragment>
-      <a href="/" className="mobile-menu-toggle">
-        <i className="material-icons menu"></i>
-      </a>
-
-      <a href="account.html">
+      <NavLink to={props.isLoggedIn ? '/profile' : '/login' }>
         <i className="material-icons person"></i>
-      </a>
+      </NavLink>
     </React.Fragment>
   )
 }
 
-export default profileWidget
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.authentication.isLoggedIn
+})
+
+export default connect(mapStateToProps)(profileWidget)

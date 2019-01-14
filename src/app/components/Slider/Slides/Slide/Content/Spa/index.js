@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ForwardButton from '../../../../../ForwardButton'
+import ForwardButton from '../../../../../UI/ForwardButton'
 
 const spa = (props) => (
   <div className="container">

@@ -60,8 +60,8 @@ class LanguageSwitcher extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    languages: state.languages,
-    current: state.current
+    languages: state.language.all,
+    current: state.language.current
   }
 }
 

@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/types'
 const initialState = {
   default: 0,
   current: 0,
-  languages: [
+  all: [
     {
       id: 0,
       name: 'EN',

@@ -12,7 +12,7 @@ const cart = (props) => {
       <div className="cart-dropdown">
         <div className="cart-item">
           <a href="/" className="item-thumb">
-            <img src="img/cart/item01.jpg" alt="Item" />
+            <img src="images/cart/item01.jpg" alt="Item" />
           </a>
           <div className="item-details">
             <h3 className="item-title"><a href="shop-single.html">Concrete Lamp</a></h3>
@@ -24,7 +24,7 @@ const cart = (props) => {
         </div>
         <div className="cart-item">
           <a href="shop-single.html" className="item-thumb">
-            <img src="img/cart/item02.jpg" alt="Item" />
+            <img src="images/cart/item02.jpg" alt="Item" />
           </a>
           <div className="item-details">
             <h3 className="item-title"><a href="shop-single.html">Storage Box</a></h3>

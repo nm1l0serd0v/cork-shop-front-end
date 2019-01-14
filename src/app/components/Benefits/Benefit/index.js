@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const benefit = (props) => (
   <div className="col-md-3 col-sm-6">

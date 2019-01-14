@@ -1,27 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
+
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route } from 'react-router-dom'
 
 import languageReducer from './store/reducers/language'
-import * as serviceWorker from './serviceWorker';
+import authenticationReducer from './store/reducers/authentication'
+
+import { BrowserRouter } from 'react-router-dom'
+import Routes from './routes.js'
 
 import Layout from './layouts/Application';
-import Home from './pages/Home';
-import ProductsIndex from './pages/ProductsIndex'
-
 
 import './styles/application.scss'
 
-const store = createStore(languageReducer)
+import * as serviceWorker from './serviceWorker';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
+
+const rootReducer = combineReducers({
+  language: languageReducer,
+  authentication: authenticationReducer
+})
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+)
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Layout>
-        <Route path="/" exact component={Home} />
-        <Route path="/products" component={ProductsIndex} />
+        <Routes />
       </Layout>
     </BrowserRouter>
   </Provider>,
