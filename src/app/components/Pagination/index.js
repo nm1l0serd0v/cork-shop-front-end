@@ -1,20 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { NavLink, withRouter } from 'react-router-dom'
+
 const pagination = (props) => {
   return (
     <div className="pagination padding-bottom">
       <div className="page-numbers">
-        {(Array.from(Array(props.totalPages).keys())).map((page, index) => (
-          page + 1 == props.currentPage 
-          ? <span key={index} className="active">{page + 1}</span>
-          : <a key={index} href="/">{page + 1}</a> 
-        ))}
+        {(Array.from(Array(props.totalPages).keys())).map((page, index) => {
+          let pageNumber = page + 1
+
+          return(
+            <NavLink  
+              key={index}
+              isActive={() => (props.currentPage === pageNumber)}
+              to={{
+                pathname: '/products',
+                search: `?page=${pageNumber}`
+              }} >
+              {pageNumber}
+            </NavLink> 
+          )
+        })}
       </div>
+
       <div className="pager">
-        { props.currentPage !== 1 ? <a href="#">Prev</a> : <span>Prev</span> }
+        { props.currentPage === 1 
+          ? <span>Prev</span> 
+          : <NavLink to={`/products?page=${props.currentPage - 1}`}>Prev</NavLink> 
+        }
         <span>|</span>
-        <a href="#">Next</a>
+        { props.currentPage === props.totalPages 
+          ? <span>Next</span> 
+          : <NavLink to={`/products?page=${props.currentPage + 1}`}>Next</NavLink> 
+        }
       </div>
     </div>
   )
@@ -26,8 +45,8 @@ pagination.defaultProps = {
 }
 
 pagination.propTypes = {
-  totalPages: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired
+  totalPages: PropTypes.number,
+  currentPage: PropTypes.number
 }
 
-export default pagination
+export default withRouter(pagination)

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import currencyFormatter from 'currency-formatter'
 
+import Loader from './Loader'
 import Rating from './Rating'
 import Labels from './Labels'
 
@@ -28,6 +29,7 @@ const product = (props) => {
 
   return(
     <div className="shop-item">
+      <Loader />
       <div className="shop-thumbnail">
         { props.discount ? discountLabel : null }
         { props.rating !== undefined ? rating : null }
@@ -67,8 +69,7 @@ product.defaultProps = {
 product.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  imageUrl: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
   discount: PropTypes.bool.isRequired,
   discountPrice: PropTypes.number
 }

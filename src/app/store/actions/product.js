@@ -1,6 +1,8 @@
 import * as actionTypes from './types'
 import axios from '../../axiosInstance.js'
 
+const productsPerPage = 12
+
 export const fetchProductsStart = () => {
   return {
     type: actionTypes.FETCH_PRODUCTS_START
@@ -21,10 +23,13 @@ export const fetchProductsFail = (error) => {
   }
 }
 
-export const fetchProducts = (currentPage) => {
+export const fetchProducts = (query) => {
+  const urlParams = new URLSearchParams(query)
+  const page = urlParams.get('page')
+
   return dispatch => {
     dispatch(fetchProductsStart())
-    axios.get(`/products?per_page=12&page=${currentPage === undefined ? 1 : currentPage}`)
+    axios.get(`/products?per_page=${productsPerPage}&page=${page === null ? 1 : page}`)
       .then(response => {
         dispatch(fetchProductsSuccess(response.data))
       }).catch(error => {

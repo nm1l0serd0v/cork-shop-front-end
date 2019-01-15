@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+
 import * as actions from '../../store/actions'
 
 import Filters from '../../components/Filters'
@@ -11,17 +13,19 @@ import Showing from '../../components/Showing'
 class ProductsIndex extends React.Component {
   constructor(props) {
     super(props)
-
-    this.onPageClickHandler = this.onPageClickHandler.bind(this)
   }
 
   componentDidMount() {
-    this.props.loadProducts(this.props.currentPage)
+    this.props.loadProducts(this.props.location.search)
+
+    this.unlisten = this.props.history.listen((location, action) => {
+      this.props.loadProducts(location.search)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    });
   }
 
-  onPageClickHandler(e, pageNumber) {
-    e.preventDefault()
-    console.log(pageNumber)
+  componentWillUnmount() {
+    this.unlisten()
   }
 
   render() {
@@ -36,7 +40,6 @@ class ProductsIndex extends React.Component {
                 <Showing
                   from={this.props.showingFromNumber}
                   to={this.props.showingToNumber} 
-                  pageClicked={this.onPageClickHandler}
                 />
               </div>
               <div className="column">
@@ -57,6 +60,7 @@ class ProductsIndex extends React.Component {
             <Pagination
               currentPage={this.props.currentPage}
               totalPages={this.props.totalPages}
+              pageClicked={this.onPageLinkClickHandler}
             />
           </div>
         </div>
@@ -75,7 +79,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchFromProps = dispatch => ({
-  loadProducts: () => { dispatch(actions.fetchProducts()) }
+  loadProducts: (query) => { dispatch(actions.fetchProducts(query)) }
 })
 
-export default connect(mapStateToProps, mapDispatchFromProps)(ProductsIndex)
+export default withRouter(connect(mapStateToProps, mapDispatchFromProps)(ProductsIndex))
