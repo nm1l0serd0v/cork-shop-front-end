@@ -35,7 +35,7 @@ const product = (props) => {
 
         <a href="shop-single.html" className="item-link"> </a>
 
-        <img src={props.imageUrl} alt="Shop item"/>
+        <img src={props.master.images[0].large_url} alt="Shop item" width="600" height="600"/>
         <div className="shop-item-tools">
           <a href="#" className="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
             <i className="material-icons favorite_border"></i>

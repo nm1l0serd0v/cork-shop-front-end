@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 
 import languageReducer from './store/reducers/language'
 import authenticationReducer from './store/reducers/authentication'
+import productsReducer from './store/reducers/products'
 
 import { BrowserRouter } from 'react-router-dom'
 import Routes from './routes.js'
@@ -21,7 +22,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   language: languageReducer,
-  authentication: authenticationReducer
+  authentication: authenticationReducer,
+  products: productsReducer
 })
 
 const store = createStore(

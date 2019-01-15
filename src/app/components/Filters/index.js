@@ -9,7 +9,6 @@ const filters = (props) => {
       <aside className="sidebar">
         <span className="sidebar-close"><i className="material-icons close"></i></span>
         <div className="widgets">
-
           <Option title="Categories" name="category" isList options={[
             'All 135',
             'Furniture 42',

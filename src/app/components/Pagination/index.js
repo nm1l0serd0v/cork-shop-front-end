@@ -1,21 +1,33 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const pagination = (props) => (
-  <div className="pagination padding-bottom">
-    <div className="page-numbers">
-      <a href="#">1</a>
-      <a href="#">2</a>
-      <span className="active">3</span>
-      <a href="#">4</a>
-      <span>...</span>
-      <a href="#">10</a>
+const pagination = (props) => {
+  return (
+    <div className="pagination padding-bottom">
+      <div className="page-numbers">
+        {(Array.from(Array(props.totalPages).keys())).map((page, index) => (
+          page + 1 == props.currentPage 
+          ? <span key={index} className="active">{page + 1}</span>
+          : <a key={index} href="/">{page + 1}</a> 
+        ))}
+      </div>
+      <div className="pager">
+        { props.currentPage !== 1 ? <a href="#">Prev</a> : <span>Prev</span> }
+        <span>|</span>
+        <a href="#">Next</a>
+      </div>
     </div>
-    <div className="pager">
-      <a href="#">Prev</a>
-      <span>|</span>
-      <a href="#">Next</a>
-    </div>
-  </div>
-)
+  )
+}
+
+pagination.defaultProps = {
+  totalPages: 1,
+  currentPage: 1
+}
+
+pagination.propTypes = {
+  totalPages: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired
+}
 
 export default pagination
