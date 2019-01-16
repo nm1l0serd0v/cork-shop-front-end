@@ -9,7 +9,7 @@ import languageReducer from './store/reducers/language'
 import authenticationReducer from './store/reducers/authentication'
 import productsReducer from './store/reducers/products'
 
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Routes from './routes.js'
 
 import Layout from './layouts/Application';
@@ -19,6 +19,11 @@ import './styles/application.scss'
 import * as serviceWorker from './serviceWorker';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
+
+if (process.env.NODE_ENV !== 'production') {
+    const {whyDidYouUpdate} = require('why-did-you-update');
+    whyDidYouUpdate(React);
+  }
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -33,13 +38,14 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router>
       <Layout>
         <Routes />
       </Layout>
-    </BrowserRouter>
+    </Router>
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

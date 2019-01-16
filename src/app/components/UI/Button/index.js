@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 const button = (props) => {
   return(
-    <a className={props.className}>
+    <div className={props.className}>
       {props.children}
-    </a>
+    </div>
   )
 }
 

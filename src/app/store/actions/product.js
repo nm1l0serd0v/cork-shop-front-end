@@ -1,5 +1,5 @@
 import * as actionTypes from './types'
-import axios from '../../axiosInstance.js'
+import axios from '../../lib/axiosInstance.js'
 
 const productsPerPage = 12
 

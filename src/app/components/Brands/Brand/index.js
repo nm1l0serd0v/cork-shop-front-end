@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const brand = (props) => {
   return(
     <div className="col-sm-4 col-xs-6">
-      <a href="#" className="brand">
+      <a href="/" className="brand">
         <div className="brand-logo opacity-75">
           <img src={props.imagePath} alt="Brand" />
         </div>

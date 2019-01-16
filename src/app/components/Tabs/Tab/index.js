@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 const tab = (props) => {
   return(
     <li onClick={() => props.clicked(props.index)} className={props.active ? 'active' : ''}>
-      <a role="tab" data-toggle="tab">
+      <div role="tab" data-toggle="tab">
         {props.name}
-      </a>
+      </div>
     </li>
   )
 }

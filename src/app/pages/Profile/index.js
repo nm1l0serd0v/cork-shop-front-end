@@ -57,11 +57,11 @@ const profile = (props) => {
               <h3>Your reward points:</h3>
               <h3><span className="text-semibold">1356</span> <span className="h5">points</span></h3>
               <p className="text-sm text-gray">You can spend these points on products from our shop catalog, to reduce shipping cost, etc.</p>
-              <a href="shop-boxed-sl.html" className="btn btn-default btn-ghost icon-left btn-block">
+              <a href="/" className="btn btn-default btn-ghost icon-left btn-block">
                 <i className="material-icons arrow_back"></i>
                 Go to Shop
               </a>
-              <a href="#" className="btn btn-primary btn-block waves-effect waves-light space-top-none">Get more points</a>
+              <a href="/" className="btn btn-primary btn-block waves-effect waves-light space-top-none">Get more points</a>
             </aside>
           </div>
         </div>

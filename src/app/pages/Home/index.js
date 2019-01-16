@@ -3,7 +3,6 @@ import React from 'react'
 import Slider from '../../components/Slider'
 import Brands from '../../components/Brands'
 import Benefits from '../../components/Benefits'
-import ProductsSummary from '../../components/ProductsSummary'
 
 const brands = [
   {
@@ -58,7 +57,7 @@ const benefits = [
 const home = (props) => (
   <React.Fragment>
     <Slider />
-    <ProductsSummary />
+    {/* <Categories /> */}
     <Brands brands={brands}/>
     <Benefits benefits={benefits} />
   </React.Fragment>

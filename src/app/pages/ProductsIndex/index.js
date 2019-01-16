@@ -11,10 +11,6 @@ import SearchInput from '../../components/SearchInput'
 import Showing from '../../components/Showing'
 
 class ProductsIndex extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     this.props.loadProducts(this.props.location.search)
 
@@ -50,7 +46,7 @@ class ProductsIndex extends React.Component {
             <div className="row">
               {this.props.products.map((product, i) => (
                 <div key={i} className="col-md-4 col-sm-6">
-                  <Product {...product} />
+                  <Product {...product} loading={this.props.loading} />
                 </div>
               ))}
             </div>
