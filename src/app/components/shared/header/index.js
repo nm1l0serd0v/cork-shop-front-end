@@ -9,12 +9,10 @@ import Toolbar from './toolbar'
 const header = (props) => {
   return (
     <header className="navbar navbar-sticky">
-
       <Logo />
-      <LanguageSwitcher />
+      {/* <LanguageSwitcher /> */}
       <Navigation />
-      <Toolbar />
-
+      {/* <Toolbar /> */}
     </header>
   )
 }

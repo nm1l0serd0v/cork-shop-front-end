@@ -4,9 +4,10 @@ const logo = (props) => {
   return(
     <React.Fragment>
       <a href="index.html" className="site-logo visible-desktop">
-        <span>[</span> M
+        <span>[&nbsp;</span> CORK
         <span className="text-gray">/</span>
-        STORE <span>]</span>
+        STORE <span>&nbsp;]</span>
+        
       </a>
       <a href="index.html" className="site-logo visible-mobile">
         <span>[</span> M <span>]</span>

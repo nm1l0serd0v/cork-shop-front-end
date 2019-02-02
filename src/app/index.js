@@ -1,46 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import thunk from 'redux-thunk'
-import { Provider } from 'react-redux'
-
-import languageReducer from './store/reducers/language'
-import authenticationReducer from './store/reducers/authentication'
-import productsReducer from './store/reducers/products'
-
 import { BrowserRouter as Router } from 'react-router-dom'
-import Routes from './routes.js'
+
+import { Provider } from 'mobx-react'
+import MobxDevtools from 'mobx-react-devtools'
+import ProductStore from './stores/products'
 
 import Layout from './layouts/Application';
+import Routes from './components/Routes'
 
 import './styles/application.scss'
 
 import * as serviceWorker from './serviceWorker';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
-
-if (process.env.NODE_ENV !== 'production') {
-    const {whyDidYouUpdate} = require('why-did-you-update');
-    whyDidYouUpdate(React);
-  }
-
-const rootReducer = combineReducers({
-  language: languageReducer,
-  authentication: authenticationReducer,
-  products: productsReducer
-})
-
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
-)
-
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider productStore={ProductStore}>
     <Router>
       <Layout>
         <Routes />
+        <MobxDevtools />
       </Layout>
     </Router>
   </Provider>,

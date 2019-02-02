@@ -37,7 +37,7 @@ const footer = (props) => {
 
       <Column leadTitle="Payment Methods" smallTitle="We support one of the following payment methods.">
         <div className="cards">
-          <img src="images/cards.png" alt="Cards"/>
+          <img src="/images/cards.png" alt="Cards"/>
         </div>
         <div className="scroll-to-top-btn"><i className="material-icons trending_flat"></i></div>
       </Column>

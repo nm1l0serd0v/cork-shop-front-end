@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Slider from '../../components/Slider'
+// import Categories from '../../components/Categories'
 import Brands from '../../components/Brands'
 import Benefits from '../../components/Benefits'
 

@@ -1,17 +1,18 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
+
+import currencyFormatter from 'currency-formatter'
+import { productPath } from '../../../lib/routes'
 
 import Loader from './Loader'
-import currencyFormatter from 'currency-formatter'
-
 import Rating from './Rating'
 import Labels from './Labels'
 
-const formatPrice = (price) => {
-  return currencyFormatter.format(price, { code: 'USD' })
-}
+const formatPrice = (price) => { return currencyFormatter.format(price, { code: 'USD' }) }
 
 const product = (props) => {
+	if (props.loading === true) { return <Loader /> }
+
   const rating = <Rating rating={props.rating}/>;
   const labels = <Labels labels={props.labels}/>;
   const discountLabel = <span className="shop-label text-danger">Sale</span>;
@@ -27,7 +28,7 @@ const product = (props) => {
     </span>
   )
 
-	if (props.loading === true) { return <Loader /> }
+  let imageLink = props.master.images[0].large_url
 
   return(
     <div className="shop-item">
@@ -36,13 +37,15 @@ const product = (props) => {
         { props.rating !== undefined ? rating : null }
         { props.labels.length !== 0 ? labels : null }
 
-        <a href="/" className="item-link"> </a>
+        <NavLink to={productPath(props.id)} className="item-link" />
 
-        <img src={props.master.images[0].large_url} alt="Shop item" width="100%" height="100%"/>
+        <img src={imageLink} style={{backgroundColor: '#ecebeb', minHeight: '262px'}} alt="Shop item" width="100%" height="100%" />
+
         <div className="shop-item-tools">
           <a href="/" className="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
             <i className="material-icons favorite_border"></i>
           </a>
+
           <a href="/" className="add-to-cart">
             <em>Add to Cart</em>
             <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
@@ -51,9 +54,12 @@ const product = (props) => {
           </a>
         </div>
       </div>
+
       <div className="shop-item-details">
         <h3 className="shop-item-title" style={{width: '100%'}}>
-          <a href="/">{props.name}</a>
+          <NavLink to={productPath(props.id)}>
+            {props.name}
+          </NavLink>
         </h3>
 
         {price.discount ? priceWithDiscount : price}
@@ -65,14 +71,6 @@ const product = (props) => {
 product.defaultProps = {
   discount: false,
   labels: []
-}
-
-product.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  discount: PropTypes.bool.isRequired,
-  discountPrice: PropTypes.number
 }
 
 export default product

@@ -1,9 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import Language from './language'
-
-import { setLanguage } from '../../../../store/actions'
 
 import { findLanguageById } from '../../../../lib/language'
 
@@ -14,9 +11,6 @@ class LanguageSwitcher extends React.Component {
     this.state = {
       expanded: false
     }
-
-    this.toggleHandler = this.toggleHandler.bind(this)
-    this.languageSelectedHandler = this.languageSelectedHandler.bind(this)
   }
 
   toggleHandler() {
@@ -35,7 +29,7 @@ class LanguageSwitcher extends React.Component {
     const currentLanguage = findLanguageById(this.props.current, this.props.languages)
 
     return(
-      <div onClick={this.toggleHandler} className={`lang-switcher ${this.state.expanded ? 'open' : ''}`}>
+      <div onClick={this.toggleHandler.bind(this)} className={`lang-switcher ${this.state.expanded ? 'open' : ''}`}>
         <div className="lang-toggle">
 
           <img src={currentLanguage.path} alt={currentLanguage.alt} />
@@ -48,7 +42,7 @@ class LanguageSwitcher extends React.Component {
                 name={language.name}
                 alt={language.alt}
                 path={language.path}
-                languageSelected={this.languageSelectedHandler}
+                languageSelected={this.languageSelectedHandler.bind(this)}
               />
             ))}
           </ul>
@@ -58,17 +52,4 @@ class LanguageSwitcher extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    languages: state.language.all,
-    current: state.language.current
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onLanguageSeted: (id) => { dispatch(setLanguage(id)) }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageSwitcher)
+export default LanguageSwitcher
